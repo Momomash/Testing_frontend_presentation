@@ -45,10 +45,17 @@
         <section>
           <section>
             <h2>Зачем?</h2>
-            <img src="img/why/where.jpg" width="600px" />
+            <img
+              src="img/why/where.jpg"
+              width="600px"
+              alt="Где тесты? тут (мем)"
+            />
           </section>
           <section>
-            <img src="img/why/cheese.png" />
+            <img
+              src="img/why/cheese.png"
+              alt="Теория шведского сыра или почему самолеты иногда падают"
+            />
           </section>
           <section style="text-align: left">
             <h4>Кейсы</h4>
@@ -64,9 +71,13 @@
 
         <!-- Когда start -->
         <section>
-          <section>Когда?</section>
+          <section><h3>Когда?</h3></section>
           <section>
-            <img src="img/when/children.png" style="width: 80%" />
+            <img
+              src="img/when/children.png"
+              style="width: 80%"
+              alt="Тесты нужно писать сразу. Они же еще менеджеры! (мем)"
+            />
           </section>
           <section>
             <h3>Почему такое невозможно?</h3>
@@ -109,6 +120,68 @@
         <!-- Когда end -->
 
         <!-- Автостопом по тестированию start -->
+        <section>
+          <section>
+            <h2>Автостопом по тестированию</h2>
+          </section>
+          <section>
+            <img
+              src="img/hitchhike/graph.png"
+              alt="Схема - классификация видов тестирования"
+            />
+          </section>
+          <section>
+            <img
+              src="img/hitchhike/graph2.png"
+              alt="Важные виды тестирования"
+            />
+          </section>
+          <section>
+            <h3>Виды тестов на фронте по объекту тестирования</h3>
+            <ul style="list-style: none">
+              <li>
+                Юнит-тесты
+                <span><b>(отдельные компоненты, функции, модули)</b></span>
+                <span
+                  class="fragment"
+                  data-fragment-index="1"
+                  style="color: yellowgreen; padding-left: 30px"
+                >
+                  <br />
+                  - snapshot-тесты (jest)<br />
+                  - unit-тесты (jest + react-testing-library)
+                </span>
+              </li>
+              <li>
+                Интеграционные тесты
+                <span><b>(взаимодействие между модулями)</b></span>
+                <span
+                  class="fragment"
+                  data-fragment-index="1"
+                  style="color: yellowgreen; padding-left: 30px"
+                >
+                  <br />
+                  - auto-тесты + моки (cypress)
+                </span>
+              </li>
+              <li>
+                end-to-end тесты
+                <span><b>(воздействие на систему через интерфейс)</b></span>
+                <span
+                  class="fragment"
+                  data-fragment-index="1"
+                  style="color: yellowgreen; padding-left: 30px"
+                >
+                  <br />
+                  - auto-тесты + backend (cypress)
+                </span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <img src="img/hitchhike/pyramid.png" alt="Пирамида тестирования" />
+          </section>
+        </section>
         <!-- Автостопом по тестированию end -->
 
         <!-- snapshot-тесты start -->
