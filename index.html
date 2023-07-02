@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Тестирование фронтенда & Cypress</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/dracula.css" />
+    <link rel="stylesheet" href="css/custom_styles.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <ul class="slides">
+        <!--Вступление-->
+        <section style="text-align: left">
+          <h3>#поговорим_за_frontend</h3>
+          <br />
+          <h2>Тестирование фронтенда & Cypress</h2>
+        </section>
+        <section>
+          <ul style="list-style: none">
+            <li>Зачем?</li>
+            <li>Когда?</li>
+            <li>Автостопом по тестированию</li>
+            <li>Как?</li>
+            <ul style="list-style: none; margin-left: 50px">
+              <li>snapshot-тесты</li>
+              <li>unit-тесты</li>
+              <li>auto-тесты</li>
+            </ul>
+            <li>Минусы?</li>
+          </ul>
+        </section>
+        <!--Зачем? start -->
+        <section>
+          <section>
+            <h2>Зачем?</h2>
+            <img
+              src="img/why/where.jpg"
+              width="600px"
+              alt="Где тесты? тут (мем)"
+            />
+          </section>
+          <section>
+            <img
+              src="img/why/cheese.png"
+              alt="Теория шведского сыра или почему самолеты иногда падают"
+            />
+          </section>
+          <section style="text-align: left">
+            <h4>Кейсы</h4>
+            <ul style="list-style: none">
+              <li>Быть уверенным в своём коде</li>
+              <li>Покрыть редкие кейсы</li>
+              <li>Безопасный рефакторинг</li>
+              <li>Регресс и стабильность</li>
+            </ul>
+          </section>
+        </section>
+        <!--Зачем? end -->
+
+        <!-- Когда start -->
+        <section>
+          <section><h3>Когда?</h3></section>
+          <section>
+            <img
+              src="img/when/children.png"
+              style="width: 80%"
+              alt="Тесты нужно писать сразу. Они же еще менеджеры! (мем)"
+            />
+          </section>
+          <section>
+            <h3>Почему такое невозможно?</h3>
+            <ul style="list-style: none">
+              <li>Бизнес хочет фич</li>
+              <li>Менеджеры хотят фич</li>
+              <li>Разработчики хотят фич</li>
+              <br />
+              <li class="fragment" style="color: red">Нет времени</li>
+              <li class="fragment">
+                Никто
+                <span style="color: red">не любит/не умеет писать</span>
+                тесты
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Когда?</h3>
+            <ul style="list-style: none">
+              <li class="fragment">
+                Перед написанием кода
+                <span class="fragment" style="color: greenyellow">(TDD)</span>
+              </li>
+              <li class="fragment">
+                Вместе с кодом
+                <span class="fragment" style="color: greenyellow"
+                  >(pullRequest вместе с тестами)</span
+                >
+              </li>
+              <li class="fragment">Перед релизом фичи</li>
+              <li class="fragment">
+                В момент фикса бага
+                <span class="fragment" style="color: greenyellow"
+                  >(фикс + тест)</span
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+        <!-- Когда end -->
+
+        <!-- Автостопом по тестированию start -->
+        <section>
+          <section>
+            <h2>Автостопом по тестированию</h2>
+          </section>
+          <section>
+            <img
+              src="img/hitchhike/graph.png"
+              alt="Схема - классификация видов тестирования"
+            />
+          </section>
+          <section>
+            <img
+              src="img/hitchhike/graph2.png"
+              alt="Важные виды тестирования"
+            />
+          </section>
+          <section>
+            <h3>Виды тестов на фронте по объекту тестирования</h3>
+            <ul style="list-style: none">
+              <li>
+                Юнит-тесты
+                <span><b>(отдельные компоненты, функции, модули)</b></span>
+                <span
+                  class="fragment"
+                  data-fragment-index="1"
+                  style="color: yellowgreen; padding-left: 30px"
+                >
+                  <br />
+                  - snapshot-тесты (jest)<br />
+                  - unit-тесты (jest + react-testing-library)
+                </span>
+              </li>
+              <li>
+                Интеграционные тесты
+                <span><b>(взаимодействие между модулями)</b></span>
+                <span
+                  class="fragment"
+                  data-fragment-index="1"
+                  style="color: yellowgreen; padding-left: 30px"
+                >
+                  <br />
+                  - auto-тесты + моки (cypress)
+                </span>
+              </li>
+              <li>
+                end-to-end тесты
+                <span><b>(воздействие на систему через интерфейс)</b></span>
+                <span
+                  class="fragment"
+                  data-fragment-index="1"
+                  style="color: yellowgreen; padding-left: 30px"
+                >
+                  <br />
+                  - auto-тесты + backend (cypress)
+                </span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <img src="img/hitchhike/pyramid.png" alt="Пирамида тестирования" />
+          </section>
+          <section>
+            <h3>Где хранить тесты?</h3>
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+              "
+            >
+              <pre style="margin-right: 10px">
+                 <code class="javascript"  data-trim data-noescape>
+                    --calculateFactorial.ts
+                    --__tests__
+                    ---calculateFactorial.test.ts
+                 </code>
+               </pre>
+              <pre style="margin-left: 10px">
+                 <code class="javascript"  data-trim data-noescape>
+                    --calculateFactorial.ts
+                    --calculateFactorial.test.ts
+                 </code>
+               </pre>
+            </div>
+          </section>
+          <section>
+            <h3>Структура теста</h3>
+            <pre>
+                 <code class="javascript"  data-trim data-noescape data-line-numbers="0|1|3,13|4,7,9,12|6,11">
+                   import { calculateFactorial } from '../calculateFactorial';
+
+                    describe('calculateFactorial tests', () => {
+                        test('calculateFactorial should return 120 for !5', () => {
+                            const result = calculateFactorial(5);
+                            expect(result).toBe(120);
+                        });
+
+                        test('calculateFactorial should return 1 for !0', () => {
+                            const result = calculateFactorial(0);
+                            expect(result).toBe(1);
+                        });
+                    });
+                 </code>
+            </pre>
+          </section>
+          <section>
+            <h3>Mocks</h3>
+            <blockquote style="padding: 20px">
+              <p>
+                <b>Моки</b> — "объект-имитация", объекты/функции,
+                ппредназначенные для симуляции поведения реальных объектов во
+                время тестирования
+              </p>
+            </blockquote>
+            <a href="https://fakerjs.dev/">https://fakerjs.dev/</a>
+          </section>
+          <section>
+            <h3>Test coverage</h3>
+            <blockquote class="fragment">
+              <p><b>80%</b></p>
+            </blockquote>
+            <pre class="fragment">
+              <code class="javascript"  data-trim data-noescape>
+                npx jest --coverage
+              </code>
+            </pre>
+            <img
+              src="img/hitchhike/coverage.png"
+              alt="Пример отчета о покрытии тестами"
+              class="fragment"
+            />
+            <p class="fragment" style="color: red">
+              Гонка за coverage - путь к плохим неээфективным тестам
+            </p>
+          </section>
+          <section>
+            <h3>Правила/рекомендации написания тестов</h3>
+            <ul style="list-style: none">
+              <li>Некрасивый тест лучше его отсутствия</li>
+              <li>Один тест для одного кейса</li>
+              <li>Чем модульнее код, тем проще его покрыть тестами</li>
+              <li>Тесты не должны зависеть от окружения (Date.now и пр.)</li>
+              <li>Тесты должны покрывать крайние/нулевые кейсы</li>
+              <li>Тесты - это тоже код (порядок важен)</li>
+            </ul>
+          </section>
+        </section>
+        <!-- Автостопом по тестированию end -->
+
+        <!-- snapshot-тесты start -->
+        <section>
+          <section>
+            <h3>Snapshot-тесты</h3>
+          </section>
+          <section>
+            <blockquote style="padding: 20px">
+              <p>
+                <b>Snapshots</b> — это тесты, которые делают
+                <b>скриншот компонента</b>
+                и сравнивают с актуальным скриншотом, который делается во время
+                прогона тестов.
+              </p>
+            </blockquote>
+          </section>
+          <section>
+            <div class="r-stack">
+              <img src="img/how/shapshots/diffs_img.png" alt="diffs from img" />
+              <img
+                src="img/how/shapshots/diffs_layout.png"
+                alt="diffs from layout"
+                class="fragment"
+              />
+            </div>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Что</span> тестировать?</h3>
+            <ul style="list-style: none">
+              <li>"Глупые" компоненты (без состояния)</li>
+              <li>Компоненты-обертки над material-ui</li>
+              <li>
+                Компоненты с разным внешним видом в зависимости от пропсов
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Когда</span> тестировать?</h3>
+            <ol style="list-style: none">
+              <li>
+                Написали компонент - сделали снапшот
+                <b>на каждое состояние компонента</b>
+              </li>
+              <li>Сделали рефакторинг/изменения - запустили тест</li>
+              <p style="color: red" class="fragment" data-fragment-index="1">
+                ❌ Тест упал - изменение ожидаемое или баг?
+              </p>
+              <p
+                style="color: yellowgreen"
+                class="fragment"
+                data-fragment-index="1"
+              >
+                ✅ Тест прошел - вы великолепны!
+              </p>
+            </ol>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Как</span> тестировать?</h3>
+            <div class="r-stack">
+              <img
+                src="img/how/shapshots/example_1.png"
+                alt="Как тестировать - шаг 1"
+              />
+              <img
+                src="img/how/shapshots/example_2.png"
+                alt="Как тестировать - шаг 2"
+                class="fragment"
+              />
+              <img
+                src="img/how/shapshots/example_3.png"
+                alt="Как тестировать - шаг 3"
+                class="fragment"
+              />
+            </div>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Как</span> тестировать?</h3>
+            <div class="r-stack">
+              <img
+                src="img/how/shapshots/ci.png"
+                alt="Команда запуска снапшотов"
+              />
+              <img
+                src="img/how/shapshots/structure.png"
+                alt="Файловая структура снапшотов"
+                class="fragment"
+              />
+            </div>
+          </section>
+        </section>
+        <!-- snapshot-тесты end -->
+
+        <!-- unit-тесты start -->
+        <section>
+          <section>
+            <h3>Unit-тесты</h3>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Что</span> тестировать?</h3>
+            <ul style="list-style: none">
+              <li>Утилиты (функции)</li>
+              <li>Компоненты</li>
+              <li>Функции, в которых вы не уверены</li>
+              <li class="fragment">
+                <b>Крайние случаи</b>
+              </li>
+            </ul>
+            <h3 class="fragment">
+              <span style="color: red">Что не нужно</span> тестировать?
+            </h3>
+            <ul style="list-style: none" class="fragment">
+              <li>Встроенные методы</li>
+              <li>Методы библиотек</li>
+              <li>Очевидные функции <i>(2+2 = 4)</i></li>
+            </ul>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Как</span> тестировать?</h3>
+            <div class="r-stack">
+              <img
+                src="img/how/units/example_1.png"
+                alt="Как тестировать - шаг 1"
+              />
+              <img
+                src="img/how/units/example_2.png"
+                alt="Как тестировать - шаг 2"
+                class="fragment"
+              />
+              <img
+                src="img/how/units/example_3.png"
+                alt="Как тестировать - шаг 3"
+                class="fragment"
+              />
+            </div>
+          </section>
+          <section>
+            <a href="https://jestjs.io/ru/docs/expect"
+              >https://jestjs.io/ru/docs/expect</a
+            >
+            <div class="r-stack">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                "
+              >
+                <img
+                  src="img/how/units/expect_1.png"
+                  alt="Методы Expect 1 страница"
+                />
+                <img
+                  src="img/how/units/expect_2.png"
+                  alt="Методы Expect 2 страница"
+                />
+                <img
+                  src="img/how/units/expect_3.png"
+                  alt="Методы Expect 3 страница"
+                />
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                "
+                class="fragment"
+              >
+                <img
+                  src="img/how/units/expect_4.png"
+                  alt="Основные методы Expect 1 страница"
+                />
+                <img
+                  src="img/how/units/expect_5.png"
+                  alt="Основные методы Expect 2 страница"
+                />
+                <img
+                  src="img/how/units/expect_6.png"
+                  alt="Основные методы Expect 3 страница"
+                />
+              </div>
+            </div>
+          </section>
+        </section>
+        <!-- unit-тесты end -->
+
+        <!-- auto-тесты start -->
+        <section>
+          <section>
+            <h3>Auto-тесты</h3>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Что</span> тестировать?</h3>
+            <ul style="list-style: none">
+              <li>Пользовательские сценарии</li>
+              <li>Валидация форм</li>
+              <li>Редиректы</li>
+              <li class="fragment">
+                <b>Реакция интерфейса</b> на <b>действия пользователя</b> и
+                <b>ответы бэкенда</b>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Пример тестового сценария</h3>
+            <ol style="list-style: none">
+              <li><b>Зайди</b> на сайт без авторизации</li>
+              <li>В шапке <b>должна быть кнопка</b> “sign up”</li>
+              <li><b>Кликни</b> по ней</li>
+              <li><b>Должна открыться</b> форма</li>
+              <li><b>Заполни</b> её</li>
+              <li><b>Дождись</b> замоканного с сервера ответа об успехе</li>
+              <li><b>Должен произойти редирект</b> в личный кабинет.</li>
+            </ol>
+          </section>
+          <section>
+            <h3>
+              <span style="color: yellowgreen">На чем</span> писать тесты?
+            </h3>
+            <a href="https://habr.com/ru/articles/566348/"
+              >Habr: Selenium vs Puppeteer vs Cypress vs Playwright
+            </a>
+          </section>
+          <section>
+            <a href="https://www.cypress.io/">Cypress - документация</a>
+            <br />
+            <br />
+            <a
+              href="https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test"
+              >Writing Your First E2E Test
+            </a>
+          </section>
+          <section><h3>Демо</h3></section>
+        </section>
+        <!-- auto-тесты end -->
+
+        <!-- Минусы? start -->
+        <section>
+          <section><h3>Минусы?</h3></section>
+          <section>
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                font-size: 90%;
+              "
+            >
+              <ul style="list-style: none; color: red; flex-grow: 1">
+                <li>Ресурсы на обучение</li>
+                <li>Время на написание</li>
+                <li>Необходимость поддерживать</li>
+              </ul>
+              <ul
+                class="fragment"
+                style="list-style: none; color: yellowgreen; flex-grow: 1"
+              >
+                <li>Предсказуемость для разработчика</li>
+                <li>Модульность кода</li>
+                <li>Документирование</li>
+                <li>Безопасность рефактринга</li>
+                <br />
+                <li class="fragment">Стабильность приложения</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <!-- Минусы? end -->
+
+        <!--Бонус: полезные материалы start-->
+        <section>
+          <section><h3>Бонус</h3></section>
+          <section>
+            <a
+              href="https://habr.com/ru/companies/samokat_tech/articles/704342/"
+              >Как тестировать современный фронтенд (habr) (внизу статьи много
+              полезных материалов)</a
+            >
+          </section>
+        </section>
+        <!--Бонус: полезные материалы end-->
+      </ul>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        transition: "none",
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
