@@ -181,10 +181,101 @@
           <section>
             <img src="img/hitchhike/pyramid.png" alt="Пирамида тестирования" />
           </section>
+          <section>
+            <!-- TODO: добавить слайд про структуру тестов (describe, it, декомпозиция - один кейс- один тест. Все состояния, моки) -->
+          </section>
         </section>
         <!-- Автостопом по тестированию end -->
 
         <!-- snapshot-тесты start -->
+        <section>
+          <section>
+            <h3>Snapshot-тесты</h3>
+          </section>
+          <section>
+            <blockquote style="padding: 20px">
+              <p>
+                <b>Snapshots</b> — это тесты, которые делают
+                <b>скриншот компонента</b>
+                и сравнивают с актуальным скриншотом, который делается во время
+                прогона тестов.
+              </p>
+            </blockquote>
+          </section>
+          <section>
+            <div class="r-stack">
+              <img src="img/how/shapshots/diffs_img.png" alt="diffs from img" />
+              <img
+                src="img/how/shapshots/diffs_layout.png"
+                alt="diffs from layout"
+                class="fragment"
+              />
+            </div>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Что</span> тестировать?</h3>
+            <ul style="list-style: none">
+              <li>"Глупые" компоненты (без состояния)</li>
+              <li>Компоненты-обертки над material-ui</li>
+              <li>
+                Компоненты с разным внешним видом в зависимости от пропсов
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Когда</span> тестировать?</h3>
+            <ol style="list-style: none">
+              <li>
+                Написали компонент - сделали снапшот
+                <b>на каждое состояние компонента</b>
+              </li>
+              <li>Сделали рефакторинг/изменения - запустили тест</li>
+              <p style="color: red" class="fragment" data-fragment-index="1">
+                ❌ Тест упал - изменение ожидаемое или баг?
+              </p>
+              <p
+                style="color: yellowgreen"
+                class="fragment"
+                data-fragment-index="1"
+              >
+                ✅ Тест прошел - вы великолепны!
+              </p>
+            </ol>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Как</span> тестировать?</h3>
+            <div class="r-stack">
+              <img
+                src="img/how/shapshots/example_1.png"
+                alt="Как тестировать - шаг 1"
+              />
+              <img
+                src="img/how/shapshots/example_2.png"
+                alt="Как тестировать - шаг 2"
+                class="fragment"
+              />
+              <img
+                src="img/how/shapshots/example_3.png"
+                alt="Как тестировать - шаг 3"
+                class="fragment"
+              />
+            </div>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Как</span> тестировать?</h3>
+            <div class="r-stack">
+              <img
+                src="img/how/shapshots/ci.png"
+                alt="Команда запуска снапшотов"
+              />
+              <img
+                src="img/how/shapshots/structure.png"
+                alt="Файловая структура снапшотов"
+                class="fragment"
+              />
+            </div>
+          </section>
+        </section>
         <!-- snapshot-тесты end -->
 
         <!-- unit-тесты start -->
