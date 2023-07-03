@@ -501,6 +501,154 @@
             </a>
           </section>
           <section><h3>Демо</h3></section>
+          <section>
+            <div class="r-stack">
+              <img src="img/how/auto/example_1.png" alt="Пример автотеста" />
+              <img
+                src="img/how/auto/example_2.png"
+                alt="В автотесте тоже есть describe и it"
+                class="fragment"
+              />
+            </div>
+          </section>
+          <section>
+            <h3>Основные операторы Cypress</h3>
+          </section>
+          <section>
+            <h3>get</h3>
+            <p>
+              <span style="color: yellowgreen"
+                >получить один/несколько элементов</span
+              >
+              на странице по селектору или алиасу
+            </p>
+            <pre>
+                 <code class="javascript"  data-trim data-noescape>
+                   cy.get('.list > li') // Yield the li's in .list
+                 </code>
+               </pre>
+          </section>
+          <section>
+            <h3>visit</h3>
+            <p>перейти на урл</p>
+            <pre>
+              <code class="javascript"  data-trim data-noescape>
+                cy.visit('/') // visits the baseUrl
+
+                cy.visit('index.html') // visits the local file "index.html" if baseUrl is null
+
+                cy.visit('http://localhost:3000') // specify full URL if baseUrl is null or the domain is different the baseUrl
+
+                cy.visit({
+                  url: '/pages/hello.html',
+                  method: 'GET',
+                })
+                 </code>
+               </pre>
+          </section>
+          <section>
+            <h3>and</h3>
+            <p>соединительный оператор</p>
+            <pre>
+              <code class="javascript"  data-trim data-noescape>
+                cy.get('.err').should('be.empty').and('be.hidden') // Assert '.err' is empty & hidden
+
+                cy.contains('Login').and('be.visible') // Assert el is visible
+                 </code>
+               </pre>
+          </section>
+          <section>
+            <h3>should</h3>
+            <p>оператор проверки</p>
+            <pre>
+              <code class="javascript"  data-trim data-noescape data-line-numbers="0|5">
+                cy.get('.error').should('be.empty') // Assert that '.error' is empty
+
+                cy.contains('Login').should('be.visible') // Assert that el is visible
+
+                cy.get('nav').should('be.visible').should('have.css', 'font-family') // yields 'sans-serif'
+              </code>
+               </pre>
+          </section>
+          <section>
+            <h3>
+              get - получить один/несколько элементов на странице по селектору
+              или алиасу
+            </h3>
+            <pre>
+                 <code class="javascript"  data-trim data-noescape>
+                   cy.get('.list > li') // Yield the li's in .list
+                 </code>
+               </pre>
+          </section>
+          <section>
+            <h3>И другие...</h3>
+            <div class="r-stack">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                "
+              >
+                <img src="img/how/auto/actions_1.png" alt="Операторы cypress" />
+                <img src="img/how/auto/actions_2.png" alt="Операторы cypress" />
+                <img src="img/how/auto/actions_3.png" alt="Операторы cypress" />
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                "
+                class="fragment"
+              >
+                <img src="img/how/auto/actions_4.png" alt="Операторы cypress" />
+                <img src="img/how/auto/actions_5.png" alt="Операторы cypress" />
+                <img src="img/how/auto/actions_6.png" alt="Операторы cypress" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3><span style="color: yellowgreen">Как мокать</span> запросы?</h3>
+            <div class="r-stack">
+              <img src="img/how/auto/mocks_1.png" alt="Как мокать?" />
+              <img
+                src="img/how/auto/mocks_2.png"
+                class="fragment"
+                alt="Как мокать 2?"
+              />
+              <img
+                src="img/how/auto/mocks_3.png"
+                class="fragment"
+                alt="Как мокать 3?"
+              />
+              <img
+                src="img/how/auto/mocks_4.png"
+                class="fragment"
+                alt="Как мокать 4?"
+              />
+              <img
+                src="img/how/auto/mocks_5.png"
+                class="fragment"
+                alt="Как мокать 5?"
+              />
+            </div>
+          </section>
+          <section>
+            <h3>
+              <span style="color: yellowgreen">Как композировать</span> тесты?
+            </h3>
+            <img
+              src="img/how/auto/before_each.png"
+              alt="Композиция через beforeEach"
+              style="height: 400px"
+            />
+            <br />
+            <a href="https://jestjs.io/ru/docs/setup-teardown"
+              >Jest: подготовка и очистка</a
+            >
+          </section>
         </section>
         <!-- auto-тесты end -->
 
